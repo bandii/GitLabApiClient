@@ -35,10 +35,14 @@ namespace GitLabApiClient.Test
             // When I link the first as BlockedBy the second
             var retFromPost = await _sut.CreateAsync(TestProjectTextId,
                                                      sourceIssue.Iid,
-                                                     options => options.LinkType = LinkType.IsBlockedBy);
+                                                     options =>
+                                                     {
+                                                         options.TargetProjectId = TestProjectTextId;
+                                                         options.TargetIid = targetIssue.Iid;
+                                                     });
 
             // Then the relation is created
-            retFromPost.Should().Match<IssuesLinkRelation>(testee => testee.LinkType == LinkType.IsBlockedBy
+            retFromPost.Should().Match<IssuesLinkRelation>(testee => testee.LinkType == LinkType.RelatesTo
                                                                      && testee.SourceIssue.Iid == sourceIssue.Iid
                                                                      && testee.TargetIssue.Iid == targetIssue.Iid);
 
@@ -49,7 +53,7 @@ namespace GitLabApiClient.Test
             retFromGet.Should().NotBeNullOrEmpty();
             retFromGet.Should().HaveCount(1);
 
-            retFromGet.Single().Should().Match<IssueLink>(testee => testee.LinkType == LinkType.IsBlockedBy
+            retFromGet.Single().Should().Match<IssueLink>(testee => testee.LinkType == LinkType.RelatesTo
                                                                     && testee.Iid == targetIssue.Iid);
         }
     }

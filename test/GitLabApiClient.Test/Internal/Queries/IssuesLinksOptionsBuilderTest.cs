@@ -11,7 +11,7 @@ namespace GitLabApiClient.Test.Internal.Queries
     public class IssuesLinksOptionsBuilderTest
     {
         [Fact]
-        public void NonDefaultQueryBuilt()
+        public void QueryBuilt()
         {
             var sut = new IssuesLinkQueryBuilder();
 
@@ -19,13 +19,13 @@ namespace GitLabApiClient.Test.Internal.Queries
                                      "https://gitlab.com/api/v4/projects/proj_1/issues/1/links",
                                      new CreateIssueLinkOptions
                                      {
-                                         TargetProjectId = "proj_1", TargetIid = 2, LinkType = LinkType.IsBlockedBy
+                                         TargetProjectId = "proj_1",
+                                         TargetIid = 2
                                      });
 
             query.Should().BeEquivalentTo("https://gitlab.com/api/v4/projects/proj_1/issues/1/links?"
                                           + "target_project_id=proj_1"
-                                          + "&target_issue_iid=2"
-                                          + "&link_type=is_blocked_by");
+                                          + "&target_issue_iid=2");
         }
     }
 }

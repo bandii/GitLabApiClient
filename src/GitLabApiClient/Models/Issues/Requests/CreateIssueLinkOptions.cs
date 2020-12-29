@@ -1,5 +1,3 @@
-using GitLabApiClient.Models.Issues.Responses;
-
 namespace GitLabApiClient.Models.Issues.Requests
 {
     /// <summary>
@@ -21,10 +19,5 @@ namespace GitLabApiClient.Models.Issues.Requests
         /// <see cref="ModifiableObject.Iid"/>
         /// </remarks>
         public int TargetIid { get; set; }
-
-        /// <summary>
-        /// Type of the relation to be created between the issues
-        /// </summary>
-        public LinkType? LinkType { get; set; }
     }
 }
