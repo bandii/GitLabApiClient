@@ -34,11 +34,8 @@ namespace GitLabApiClient.Test
 
             // When I link the first as BlockedBy the second
             var retFromPost = await _sut.CreateAsync(TestProjectTextId,
-                                             sourceIssue.Iid,
-                                             new CreateIssueLinkRequest(TestProjectTextId, targetIssue.Iid)
-                                             {
-                                                 LinkType = LinkType.IsBlockedBy
-                                             });
+                                                     sourceIssue.Iid,
+                                                     options => options.LinkType = LinkType.IsBlockedBy);
 
             // Then the relation is created
             retFromPost.Should().Match<IssuesLinkRelation>(testee => testee.LinkType == LinkType.IsBlockedBy

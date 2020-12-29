@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -26,6 +27,6 @@ namespace GitLabApiClient
         /// <returns>Both the issues and the relation between them</returns>
         Task<IssuesLinkRelation> CreateAsync(ProjectId projectId,
                                              int sourceIssueIid,
-                                             CreateIssueLinkRequest createIssueLinkRequest);
+                                             Action<CreateIssueLinkOptions> options);
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -23,8 +24,14 @@ namespace GitLabApiClient
         /// <inheritdoc />
         public async Task<IssuesLinkRelation> CreateAsync(ProjectId projectId,
                                                           int sourceIssueIid,
-                                                          CreateIssueLinkRequest createIssueLinkRequest) =>
-            await _httpFacade.Post<IssuesLinkRelation>($"projects/{projectId}/issues/{sourceIssueIid}/links",
-                                                       createIssueLinkRequest);
+                                                          Action<CreateIssueLinkOptions> options)
+        {
+            var queryOptions = new CreateIssueLinkOptions();
+            options?.Invoke(queryOptions);
+
+            return await _httpFacade.Post<IssuesLinkRelation>($"projects/{projectId}/issues/{sourceIssueIid}/links",
+                                                       queryOptions);
+
+        }
     }
 }
