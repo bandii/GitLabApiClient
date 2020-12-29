@@ -38,7 +38,6 @@ namespace GitLabApiClient
             string url = _issuesLinkQueryBuilder.Build($"projects/{projectId}/issues/{sourceIssueIid}/links",
                                                        queryOptions);
             return await _httpFacade.Post<IssuesLinkRelation>(url);
-
         }
     }
 }

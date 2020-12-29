@@ -31,7 +31,7 @@ namespace GitLabApiClient.Test
             var sourceIssue = await _issuesClient.CreateAsync(TestProjectTextId,
                                                               new CreateIssueRequest("IssueLink_Title_1"));
             var targetIssue = await _issuesClient.CreateAsync(TestProjectTextId,
-                                                              new CreateIssueRequest("IssueLink_Title_1"));
+                                                              new CreateIssueRequest("IssueLink_Title_2"));
 
             // When I link the first as BlockedBy the second
             var retFromPost = await _sut.CreateAsync(TestProjectTextId,
