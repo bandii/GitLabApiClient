@@ -21,7 +21,8 @@ namespace GitLabApiClient.Test
                                                                        new IssuesQueryBuilder(),
                                                                        new ProjectIssueNotesQueryBuilder());
 
-        private readonly IIssueLinksClient _sut = new IssueLinksClient(GetFacade());
+        private readonly IIssueLinksClient _sut = new IssueLinksClient(GetFacade(),
+                                                                       new IssuesLinkQueryBuilder());
 
         [Fact]
         public async Task CanLinkTwoNewIssuesTogetherThenFetchThem()
