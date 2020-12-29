@@ -11,6 +11,11 @@ namespace GitLabApiClient
         IIssuesClient Issues { get; }
 
         /// <summary>
+        /// Access GitLab's issue links API.
+        /// </summary>
+        IIssueLinksClient IssueLinks { get; }
+
+        /// <summary>
         /// Access GitLab's uploads API.
         /// </summary>
         IUploadsClient Uploads { get; }

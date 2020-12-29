@@ -63,6 +63,7 @@ namespace GitLabApiClient
             var toDoListBuilder = new ToDoListQueryBuilder();
 
             Issues = new IssuesClient(_httpFacade, issuesQueryBuilder, projectIssueNotesQueryBuilder);
+            IssueLinks = new IssueLinksClient(_httpFacade);
             Uploads = new UploadsClient(_httpFacade);
             MergeRequests = new MergeRequestsClient(_httpFacade, mergeRequestsQueryBuilder, projectMergeRequestsQueryBuilder, projectMergeRequestsNotesQueryBuilder);
             Projects = new ProjectsClient(_httpFacade, projectQueryBuilder, projectMilestonesQueryBuilder, jobQueryBuilder);
@@ -86,6 +87,11 @@ namespace GitLabApiClient
         /// Access GitLab's issues API.
         /// </summary>
         public IIssuesClient Issues { get; }
+
+        /// <summary>
+        /// Access GitLab's issue links API.
+        /// </summary>
+        public IIssueLinksClient IssueLinks { get; }
 
         /// <summary>
         /// Access GitLab's uploads API.
